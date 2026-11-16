@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-16",
+  "browser": "Microsoft Edge / Chromium headless",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "groups": 3,
+      "families": 13,
+      "photoPanels": 26,
+      "return": "OK",
+      "emptyFilters": "OK",
+      "overflow": "OK"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "groups": 3,
+      "families": 13,
+      "photoPanels": 26,
+      "return": "OK",
+      "emptyFilters": "OK",
+      "overflow": "OK"
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "groups": 3,
+      "families": 13,
+      "photoPanels": 26,
+      "return": "OK",
+      "emptyFilters": "OK",
+      "overflow": "OK"
+    }
+  ],
+  "realExternalImages": 13,
+  "fallback": "OK",
+  "consoleErrors": [],
+  "limits": "Mobile émulé ; aucun iPhone/Safari physique testé."
+}
