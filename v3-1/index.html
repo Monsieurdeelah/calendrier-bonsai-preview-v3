@@ -21,11 +21,17 @@
 .cellstatus.off{background:#edf0ed;color:#53645a}
 .cellstatus.unknown{color:#44355d}.cellstatus.na{color:#53645a}
 .legend .cellstatus{width:20px;height:20px;line-height:20px;text-align:center;font-size:11px;vertical-align:middle;margin-right:5px}
-@media(max-width:680px){.matrix{min-width:1012px}.matrix .familycol{position:static;width:120px;min-width:120px;max-width:120px}.matrix .taskcol{left:0;width:124px;min-width:124px;max-width:124px}.matrix th,.matrix td{padding:7px 4px}.viewbtn{font-size:13px}}
+@media(max-width:680px){.matrix th,.matrix td{padding:7px 4px}.viewbtn{font-size:13px}}
 
 /* V3.1 : 12 mois visibles à la largeur de bureau ; défilement tactile autonome. */
 .wrap{max-width:1320px}.matrix{min-width:950px}.matrix .familycol{width:110px;min-width:110px;max-width:110px;left:0}.matrix .taskcol{width:180px;min-width:180px;max-width:180px;left:110px}.matrix th,.matrix td{padding:7px 3px}.cellbutton{padding:0;min-width:44px;min-height:44px}.task-icon{width:21px;height:21px;vertical-align:middle;margin-right:6px;color:#376a57;flex:none}.climate{font-size:13px;line-height:1.6;background:#edf4ef;padding:12px;border-radius:10px;margin:8px 0 12px}.backbtn{border:1px solid #9bb5a3;border-radius:9px;background:white;color:#235847;min-height:44px;padding:8px 14px;font-weight:700;cursor:pointer}.detail .backbtn{display:block;margin:12px 0}.matrix tr:nth-child(even) .taskcol{background:#f3f7f3}
-@media(max-width:680px){.matrix{min-width:940px}.matrix .familycol{position:static;width:90px;min-width:90px;max-width:90px}.matrix .taskcol{left:0;width:146px;min-width:146px;max-width:146px}}
+/* Shared border-box widths keep both pinned columns aligned at every scroll offset. */
+.matrix{--family-width:110px;--task-width:180px}
+.matrix .familycol{position:sticky;left:0;width:var(--family-width);min-width:var(--family-width);max-width:var(--family-width);z-index:3;background:#fff;border-right:1px solid #b2c7b7}
+.matrix .taskcol{position:sticky;left:var(--family-width);width:var(--task-width);min-width:var(--task-width);max-width:var(--task-width);z-index:3;background:#fff;border-right:2px solid #9bb5a3}
+.matrix thead .familycol,.matrix thead .taskcol{z-index:5;background:#eaf1eb}
+@media(max-width:680px){.matrix{--family-width:84px;--task-width:122px;min-width:818px}.matrix .familycol,.matrix .taskcol{font-size:11px;line-height:1.4}.matrix .taskcol .task-icon{width:18px;height:18px;margin-right:3px}}
+@media(max-width:360px){.matrix{--family-width:72px;--task-width:108px;min-width:792px}}
 
 .reference-photo{display:grid;grid-template-columns:minmax(180px,320px) 1fr;gap:20px;align-items:center;margin:18px 0;padding:18px;background:#fff;border:1px solid #d6e2d8;border-radius:14px}
 .reference-photo img{display:block;width:100%;height:260px;object-fit:contain;background:#f1f4ef;border-radius:9px}

@@ -2,7 +2,7 @@
   "pullRequest": "https://github.com/Monsieurdeelah/calendrier-bonsai/pull/1",
   "updated": "2026-11-16",
   "sourceBranch": "audit/donnees-bonsai-reims-2026-11-16",
-  "sourceCommit": "72927caccdd38d6dfeabf3c8b780ee7dd6672143",
-  "scope": "V3.1 : typologies, photos et filtre annuel par type d’intervention ; site principal inchangé",
+  "sourceCommit": "b067b9491973646b5e8947ed02b006e03741e2bf",
+  "scope": "V3.1 : deux colonnes fixes Famille et Intervention sur mobile ; site principal inchangé",
   "sourceRepository": "Monsieurdeelah/calendrier-bonsai"
 }
