@@ -1,0 +1,30 @@
+{
+  "sourceRepository": "Monsieurdeelah/calendrier-bonsai",
+  "sourcePullRequest": 1,
+  "sourceBranch": "audit/donnees-bonsai-reims-2026-11-16",
+  "sourceCommit": "d8c21fb91f9f7d1836d20cf5b2383a8fc29ce501",
+  "previewOnlyChanges": [
+    "Bandeau de prévisualisation et lien vers le dashboard actuel",
+    "Titre de page et noindex",
+    "Clé de stockage du mois séparée"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sourceBlob": "e53c0a03ea1d83869a7e2cfeece4a610f5907cbd"
+    },
+    {
+      "path": "audit/rapport-audit.html",
+      "sourceBlob": "eb31b06c524cdc404249ff2c16310ddca07be1e2"
+    },
+    {
+      "path": "audit/rapport-audit.md",
+      "sourceBlob": "64678eeed7139bb0bee4623bea181f2609f4a8e8"
+    },
+    {
+      "path": "audit/sources.json",
+      "sourceBlob": "9a2479ef80259e37f8f6db98ee50d4b3b5104351"
+    }
+  ],
+  "productionRepositoryModified": false
+}
