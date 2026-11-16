@@ -1,0 +1,3728 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#102d25"><title>Mon calendrier bonsaï • 13 familles</title><style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f6f1;color:#173129}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(135deg,#102d25,#235847);color:white;padding:26px max(18px,calc((100vw - 1100px)/2)) 22px}header .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c0dbce}h1{font-size:clamp(25px,4vw,38px);margin:8px 0 6px;line-height:1.13}header p{color:#dce9e1;margin:0;max-width:760px;font-size:14px;line-height:1.5}.wrap{max-width:1100px;margin:auto;padding:20px 16px 55px}.panel{background:#fff;border:1px solid #dfe8e0;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 3px 16px #193a2810}.label{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#567063;margin:0 0 10px}.months{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.month{border:1px solid #d7e1d8;border-radius:10px;background:#f8faf8;color:#2b4d3e;padding:11px 2px;font-weight:700;cursor:pointer;font-size:13px;min-height:44px}.month[aria-pressed="true"]{background:#235847;color:white;border-color:#235847}.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:17px}.field label{display:block;font-size:12px;font-weight:700;color:#4e675b;margin-bottom:6px}select{width:100%;border:1px solid #cddbd0;border-radius:10px;padding:11px 10px;background:#fff;color:#173129;font-size:16px;min-height:46px}.switchline{display:flex;align-items:center;gap:9px;margin-top:15px;font-size:13px;color:#425a4e}.switchline input{width:19px;height:19px;accent-color:#235847}.results-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 2px 12px;flex-wrap:wrap}.results-head h2{font-size:20px;margin:0}.count{font-size:13px;color:#60766a}.legend{display:flex;gap:13px;flex-wrap:wrap;font-size:12px;color:#4e6257;margin:0 0 15px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.green{background:#278358}.amber{background:#c78a25}.grey{background:#9eaaa3}.group{margin-bottom:18px}.group-head{display:flex;align-items:center;gap:11px;border-bottom:1px solid #dce6dd;padding:9px 2px 11px;margin-bottom:9px}.badge{width:10px;align-self:stretch;min-height:33px;border-radius:8px;background:var(--group)}.group-head h3{font-size:18px;margin:0}.group-head span{font-size:12px;color:#66796c}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{background:#fff;border:1px solid #dfe7df;border-radius:13px;overflow:hidden}.card summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px;cursor:pointer;min-height:58px}.card summary::-webkit-details-marker{display:none}.card summary:after{content:'⌄';margin-left:auto;font-size:19px;color:#708779}.card[open] summary:after{content:'⌃'}.status{width:8px;height:31px;border-radius:8px;flex:none}.status.optimal{background:#278358}.status.conditional{background:#c78a25}.status.off{background:#aab5ac}.task{font-size:14px;font-weight:750;flex:1;min-width:0}.pill{font-size:10px;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;font-weight:750;padding:6px 7px;border-radius:7px;white-space:nowrap}.pill.optimal{background:#e0f3e7;color:#17663d}.pill.conditional{background:#fff0d6;color:#8d5d13}.pill.off{background:#edf0ed;color:#617068}.detail{padding:0 14px 15px 32px;color:#435b4e;font-size:13px;line-height:1.6}.detail strong{color:#213d30}.detail .generic{font-style:italic;color:#718276}.empty{padding:40px 20px;text-align:center;color:#597165}.footnote{font-size:13px;line-height:1.6;color:#5b7165;padding:0 5px}button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #e1a942;outline-offset:2px}@media(max-width:680px){.months{grid-template-columns:repeat(4,minmax(0,1fr))}.filters{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.panel{padding:14px}.wrap{padding:14px 12px 40px}header{padding:25px 17px}.group-head h3{font-size:17px}}@media(min-width:681px){.months{grid-template-columns:repeat(12,minmax(0,1fr))}}
+
+.viewbar{display:flex;gap:9px;margin-bottom:16px}.viewbtn{flex:1;min-height:46px;border:1px solid #bdd0c3;background:white;color:#24503e;border-radius:12px;font-size:14px;font-weight:750;cursor:pointer}.viewbtn[aria-pressed="true"]{background:#235847;color:white}.overview-scroll{overflow-x:auto;border:1px solid #dce6dd;border-radius:12px;background:white;-webkit-overflow-scrolling:touch}.matrix{border-collapse:separate;border-spacing:0;min-width:1040px;width:100%;font-size:12px}.matrix th,.matrix td{border-bottom:1px solid #e5ebe5;border-right:1px solid #edf1ed;padding:10px 7px;text-align:center}.matrix thead th{position:sticky;top:0;background:#eaf1eb;z-index:2;color:#294a3b}.matrix .familycol{position:sticky;left:0;background:#fff;z-index:1;text-align:left;min-width:175px;max-width:175px;font-weight:750}.matrix thead .familycol{z-index:3;background:#eaf1eb}.matrix .taskcol{position:sticky;left:175px;background:#fff;z-index:1;text-align:left;min-width:155px;max-width:155px}.matrix thead .taskcol{z-index:3;background:#eaf1eb}.matrix .family-start td{border-top:3px solid #b2c7b7}.matrix .familycol{border-left:5px solid var(--group,#6a987b)}.matrix .currentcol{box-shadow:inset 0 0 0 2px #d6a142}.cellstatus{display:inline-block;width:24px;height:24px;border-radius:7px}.cellstatus.optimal{background:#278358}.cellstatus.conditional{background:#d9a13b}.cellstatus.off{background:#edf0ed}.overview-note{font-size:13px;color:#5b7165;margin:12px 0}.overview-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.overview-controls label{font-size:13px;font-weight:700}.overview-controls select{width:auto;max-width:100%}
+ .status.discouraged,.cellstatus.discouraged{background:#b44747}.pill.discouraged{background:#fbe3e3;color:#8b2525}.status.unknown,.cellstatus.unknown{background:repeating-linear-gradient(45deg,#c4c0da,#c4c0da 4px,#f4f0ff 4px,#f4f0ff 8px)}.pill.unknown{background:#f0ebfa;color:#655279}.status.na,.cellstatus.na{background:#fff;border:1px dashed #87958c}.pill.na{background:#fff;color:#617068;border:1px dashed #87958c}.detail a{color:#235847}.audit-banner{padding:14px 18px;background:#fff3d8;border:1px solid #d9a13b;border-radius:12px;margin-bottom:16px;font-size:14px;line-height:1.6}
+
+/* Keep long labels readable and leave room for months on narrow screens. */
+.card summary{display:grid;grid-template-columns:8px minmax(0,1fr) auto;gap:8px 10px}
+.card summary .status{grid-column:1;grid-row:1 / 3;height:100%;min-height:31px}
+.card summary .task{grid-column:2;grid-row:1;overflow-wrap:anywhere}
+.card summary .pill{grid-column:2;grid-row:2;justify-self:start;white-space:normal}
+.card summary:after{grid-column:3;grid-row:1 / 3}
+.detail a{display:inline-block;min-height:28px;padding:3px 0;overflow-wrap:anywhere}
+.overview-scroll:focus-visible,.cellbutton:focus-visible{outline:3px solid #e1a942;outline-offset:-3px}
+.matrix{table-layout:fixed;min-width:1122px}
+.matrix .familycol{width:175px;min-width:175px;max-width:175px;overflow-wrap:anywhere}
+.matrix .taskcol{width:155px;min-width:155px;max-width:155px;overflow-wrap:anywhere}
+.cellbutton{border:0;background:transparent;padding:5px;min-width:44px;min-height:44px;cursor:pointer;border-radius:7px}
+.cellstatus{font-weight:800;line-height:24px;color:#fff}
+.cellstatus.conditional{background:#c78a25;color:#173129}
+.cellstatus.off{background:#edf0ed;color:#53645a}
+.cellstatus.unknown{color:#44355d}.cellstatus.na{color:#53645a}
+.legend .cellstatus{width:20px;height:20px;line-height:20px;text-align:center;font-size:11px;vertical-align:middle;margin-right:5px}
+@media(max-width:680px){.matrix{min-width:1012px}.matrix .familycol{position:static;width:120px;min-width:120px;max-width:120px}.matrix .taskcol{left:0;width:124px;min-width:124px;max-width:124px}.matrix th,.matrix td{padding:7px 4px}.viewbtn{font-size:13px}}
+
+/* V3.1 : 12 mois visibles à la largeur de bureau ; défilement tactile autonome. */
+.wrap{max-width:1320px}.matrix{min-width:950px}.matrix .familycol{width:110px;min-width:110px;max-width:110px;left:0}.matrix .taskcol{width:180px;min-width:180px;max-width:180px;left:110px}.matrix th,.matrix td{padding:7px 3px}.cellbutton{padding:0;min-width:44px;min-height:44px}.task-icon{width:21px;height:21px;vertical-align:middle;margin-right:6px;color:#376a57;flex:none}.climate{font-size:13px;line-height:1.6;background:#edf4ef;padding:12px;border-radius:10px;margin:8px 0 12px}.backbtn{border:1px solid #9bb5a3;border-radius:9px;background:white;color:#235847;min-height:44px;padding:8px 14px;font-weight:700;cursor:pointer}.detail .backbtn{display:block;margin:12px 0}.matrix tr:nth-child(even) .taskcol{background:#f3f7f3}
+@media(max-width:680px){.matrix{min-width:940px}.matrix .familycol{position:static;width:90px;min-width:90px;max-width:90px}.matrix .taskcol{left:0;width:146px;min-width:146px;max-width:146px}}
+</style></head><body><header><div class="eyebrow">Collection • Montagne de Reims</div><h1>🌳 Mon calendrier bonsaï</h1><p>13 familles · 12 mois · interventions de formation et de culture technique. Fonctionne hors connexion, sur iPhone et ordinateur.</p></header><main class="wrap"><aside class="audit-banner"><strong>Prévisualisation V3.1 · corrections en cours d’examen.</strong> Version séparée du calendrier principal.</aside><aside class="audit-banner"><strong>Proposition d’audit du 16 novembre 2026 · Montagne de Reims.</strong> Les mois sont des repères : stade réel, météo, vigueur et objectif priment. « Optimal » suppose un arbre sain et les conditions décrites. Taille lourde = grosses branches ; formation = retours progressifs sur relais ; entretien = pousses de la silhouette. En développement, laisser pousser les branches à épaissir ; en finition, pincer sélectivement. Arbre prélevé, affaibli ou récemment rempoté : différer les travaux forts et la défoliation. <a href="audit/rapport-audit.html">Lire le rapport, les désaccords et les sources</a>.</aside><nav class="viewbar" aria-label="Mode d’affichage"><button class="viewbtn" id="monthlyBtn" type="button" aria-pressed="true">📅 Vue mensuelle</button><button class="viewbtn" id="overviewBtn" type="button" aria-pressed="false">🗓️ Vue annuelle</button></nav><div id="monthlyView"><section class="panel" aria-label="Filtres"><p class="label">Choisir un mois</p><div class="months" id="months"></div><div class="filters"><div class="field"><label for="family">Famille</label><select id="family"><option value="">Toutes les familles</option></select></div><div class="field"><label for="task">Intervention</label><select id="task"><option value="">Toutes les interventions</option></select></div><div class="field"><label for="status">Période</label><select id="status"><option value="active">Optimales + possibles</option><option value="optimal">Optimales uniquement</option><option value="conditional">Possibles sous conditions uniquement</option><option value="discouraged">Déconseillées</option><option value="unknown">Non documentées</option><option value="na">Non applicables</option><option value="off">Hors fenêtre</option><option value="all">Toutes les périodes</option></select></div></div><label class="switchline"><input type="checkbox" id="notes" checked> Afficher les précautions techniques dans les fiches</label></section><div class="results-head"><h2 id="heading">Interventions du mois</h2><span class="count" id="count"></span></div><div class="legend"><span><i class="cellstatus optimal" aria-hidden="true">O</i>Optimale</span><span><i class="cellstatus conditional" aria-hidden="true">C</i>Sous conditions</span><span><i class="cellstatus off" aria-hidden="true">H</i>Hors fenêtre habituelle</span><span><i class="cellstatus discouraged" aria-hidden="true">D</i>Déconseillée</span><span><i class="cellstatus unknown" aria-hidden="true">?</i>Non documentée</span><span><i class="cellstatus na" aria-hidden="true">N</i>Non applicable</span></div><div id="results" aria-live="polite"></div><p class="footnote"><strong>À garder en tête :</strong> ces fenêtres sont indicatives pour le climat de la Montagne de Reims. Le stade des bourgeons, la vigueur, les rempotages récents et l'objectif de formation priment sur le mois. Sur un arbre en récupération, évite de cumuler les interventions importantes. Données révisées et sourcées dans le rapport d’audit. Les cas « Non documenté » demandent un protocole spécifique ; « Hors fenêtre » ne signifie pas interdiction. Protéger du gel après travaux racinaires. Ficus et tamarin : croissance chaude et lumineuse ; ne pas utiliser le calendrier des caducs.</p></div><section id="overviewView" hidden><div class="panel"><h2 style="margin:0 0 8px">Vue d’ensemble · 12 mois</h2><p class="overview-note">Fais glisser le tableau horizontalement pour consulter toute l’année. Les lignes sont regroupées par famille. Touche une case pour ouvrir sa fiche mensuelle avec les précautions et les références. Le mois courant est encadré en doré.</p><div class="overview-controls"><label for="overviewFamily">Famille :</label><select id="overviewFamily"><option value="">Toutes les familles</option></select></div><div class="legend"><span><i class="cellstatus optimal" aria-hidden="true">O</i>Optimale</span><span><i class="cellstatus conditional" aria-hidden="true">C</i>Sous conditions</span><span><i class="cellstatus off" aria-hidden="true">H</i>Hors fenêtre habituelle</span><span><i class="cellstatus discouraged" aria-hidden="true">D</i>Déconseillée</span><span><i class="cellstatus unknown" aria-hidden="true">?</i>Non documentée</span><span><i class="cellstatus na" aria-hidden="true">N</i>Non applicable</span></div><div id="overviewClimate"></div><div class="overview-scroll" tabindex="0" role="region" aria-label="Tableau annuel à faire défiler horizontalement"><table class="matrix" id="overviewTable" aria-label="Planning annuel des interventions"><thead><tr><th class="familycol">Famille</th><th class="taskcol">Intervention</th></tr></thead><tbody></tbody></table></div><p class="overview-note">Les périodes restent indicatives : vérifie la vigueur et le stade de développement avant toute intervention.</p></div></section></main><script>
+const SOURCES={"FFB":["Fédération Française de Bonsaï — Classeur 2021, T2-4/T2-5/T2-6, T3 et T6","https://www.ffbonsai.com/wp-content/uploads/2021/09/Classeur-FFB-2021.pdf","Cadre général ; ne constitue pas un calendrier mensuel par espèce."],"GS":["Galinou — Pin sylvestre","https://www.bonsaigalinou.com/fr/blog/le-pin-sylvestre-en-bonsai-culture-entretien-et-conseils-n112","Une pousse annuelle ; structure automne-hiver ; construction et finition."],"GH":["Galinou — Hêtre","https://www.bonsaigalinou.com/fr/blog/le-hetre-en-bonsai-culture-entretien-et-conseils-pratiques-n110","Rempotage au gonflement ; structure visible sans feuilles ; entretien en végétation."],"GHP":["Galinou — Fiche hêtre","https://www.bonsaigalinou.com/fr/index.php?controller=attachment&id_attachment=20","Structure février/mars ; suppression sélective de grandes feuilles en été."],"GQ":["Galinou — Chêne","https://www.bonsaigalinou.com/fr/blog/le-chene-en-bonsai-le-guide-complet-n17","Rempotage au gonflement ; structure hivernale."],"GC":["Galinou — Charme","https://www.bonsaigalinou.com/fr/bonsai/4000-charme-carpinus-3-18.html","Structure en hiver ; entretien pendant la pousse."],"GJ":["Galinou — Travaux de juin","https://www.bonsaigalinou.com/fr/blog/juin-chez-bonsai-galinou-tailles-rempotages-et-nouveautes-a-la-pepiniere-n91","Le terme structure y inclut les tailles suscitant une deuxième pousse ; portée différente des grosses coupes."],"GN":["Galinou — Pin noir","https://www.bonsaigalinou.com/fr/blog/pin-noir-du-japon-en-bonsai-n22","Méthode de pépinière ; désaiguillage, formation et rempotage."],"GNP":["Galinou — Fiche pin noir","https://www.bonsaigalinou.com/fr/index.php?controller=attachment&id_attachment=27","Aiguilles anciennes mai/juin ; ne pas confondre avec mekiri."],"GE":["Galinou — Shishigashira","https://www.bonsaigalinou.com/fr/index.php?controller=attachment&id_attachment=11","Structure hivernale ; une fiche de cultivar ne suffit pas pour tous les Acer."],"GCG":["Galinou — Clip and grow","https://www.bonsaigalinou.com/fr/blog/la-technique-du-clip-and-grow-pour-creer-un-bonsai-n47","Objectif de développement : alternance croissance libre et retour."],"EP":["Bonsai Empire — Pins","https://www.bonsaiempire.fr/especes/pin","Sépare une/deux pousses ; stade des chandelles et aiguilles."],"EE":["Bonsai Empire — Acer palmatum","https://www.bonsaiempire.fr/especes/erable","Grosses coupes été ou automne ; pincement réservé à la finition."],"EJ":["Bonsai Empire — Genévrier","https://www.bonsaiempire.fr/especes/genevrier","Conserver feuillage ; éviter taille en haie et pincement généralisé."],"EF":["Bonsai Empire — Ficus","https://www.bonsaiempire.fr/especes/figuier","Chaleur/lumière, croissance libre en développement, greffe par approche."],"EA":["Bonsai Empire — Azalée","https://www.bonsaiempire.fr/especes/azalee","Après floraison ; construction au printemps si floraison sacrifiée ; racines fines."],"ET":["Bonsai Empire — Tamarin","https://www.bonsaiempire.com/tree-species/tamarind","Guide général ; ne documente pas de protocole européen de défoliation, marcotte ou greffe."],"BE":["Bonsaï Entretien — Érable","https://www.bonsai-entretien.fr/especes/bonsai-erable/","Structure en hiver ; défoliation mi-juin ; ligature en juin."],"BF":["Bonsaï Entretien — Ficus","https://www.bonsai-entretien.fr/especes/bonsai-ficus/","Structure janvier/février et rempotage mars/avril : recommandations non retenues par défaut sans culture chaude et lumineuse."],"BA":["Bonsaï Entretien — Azalée","https://www.bonsai-entretien.fr/especes/bonsai-azalee/","Après floraison ou fin automne ; pas spécifique à tous les satsuki."],"BP":["Bonsaï Entretien — Pins","https://www.bonsai-entretien.fr/especes/bonsai-pin/","Structure automne/hiver ; aiguilles anciennes en automne ; une/deux pousses."],"BJ":["Bonsaï Entretien — Genévrier","https://www.bonsai-entretien.fr/especes/bonsai-genevrier/","Page consultée mais aucun calendrier technique exploitable."],"HC":["Harry Harrington / Bonsai4Me — Chamaecyparis","https://bonsai4me.com/speciesguides/chamaecyparis-false-cypress-bonsai/","Ne revient pas sur vieux bois ; pas de taille forte estivale ; marcotte fin printemps."],"HL":["Harry Harrington / Bonsai4Me — Larix","https://bonsai4me.com/speciesguides/larix-larch-bonsai/","Préférence personnelle actuelle pour rempotage en janvier ; structure automne-fin hiver."],"HH":["Harry Harrington / Bonsai4Me — Fagus","https://bonsai4me.com/speciesguides/fagus-beech-bonsai/","Grosses coupes fin hiver ou milieu été ; marcotte après durcissement printanier."],"HQ":["Harry Harrington / Bonsai4Me — Quercus","https://bonsai4me.com/speciesguides/quercus-species-oak-bonsai/","Q. robur : autre approche du rempotage après premières feuilles ; défoliation totale risquée ; marcotte difficile."],"HR":["Harry Harrington / Bonsai4Me — Carpinus","https://bonsai4me.com/speciesguides/carpinus-hornbeam-bonsai/","Retour après durcissement première pousse ; feuilles retirées sélectivement ; défoliation laissant feuille terminale."],"HP":["Harry Harrington / Bonsai4Me — Pinus","https://bonsai4me.com/speciesguides/pinus-pine-bonsai/","Préfère août/septembre au printemps pour rempotage ; greffe fin hiver."],"VS":["Vibel, Belgique — Pins","https://www.vibel.be/en/bonsai-care/coniferous-trees/pines-bonsai-care","Travaux sylvestre en juillet et aiguilles octobre : avis particulier, non consensus."],"PP":["Petit Parcours Bonsaï — Structure","https://www.pbonsai.fr/taillestructure.html","Érable : intérêt de la chute des feuilles ; calendrier à adapter."],"CL":["Comité Champagne — Climat","https://www.champagne.fr/fr/decouvrir-le-champagne/le-terroir-champenois/le-climat-en-champagne","Référence climatique régionale, pas protocole bonsaï."],"MOJI":["Le Jardin de Moji","https://www.lejardindemoji.com/","Accès 403 le 16/11/2026 ; recherches ciblées et sitemap sans fiche exploitable. Aucun conseil attribué."],"WP":["Bonsai Today — Pinus parviflora (15 avril 2020)","https://bonsaitoday.com/articles/basics/tree-guide/pinus-parviflora-bonsai-tree-guide/","Fiche dédiée cinq aiguilles : printemps pour rempotage, branches août/septembre ; pas de travaux lourds la même année."],"WZ":["Zulauf Bonsaicenter — Pinus parviflora","https://www.zulauf.ch/resources/public/dtc/media/pflegeanl_bonsai_maedchenkiefer.pdf","Fiche dédiée : rempotage mars/mi-avril, chandelles avril/mai, pousses août, aiguilles mortes septembre/novembre ; soleil et protection racinaire."],"WH":["Herons Bonsai — Japanese White Pine","https://www.herons.co.uk/Japanese-White-Pine-94","Pinus parviflora : raccourcissement des branches mi-automne au-dessus des aiguilles ; ne démontre pas un optimum de coupe massive."],"GJP":["Galinou — Fiche Genévrier, page 2","https://www.bonsaigalinou.com/fr/index.php?controller=attachment&id_attachment=29","Structure février/début mars. Préserver feuillage arrière et veines ; le conseil de pincement manuel diverge de Bonsai Empire et n’est pas repris ici."]};
+const DATA=[
+  {
+    "id": "F1-T1",
+    "originIds": [
+      "L1"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Pinus parviflora/pentaphylla, cinq aiguilles : rempoter au printemps selon les bourgeons et avant allongement. Automne retiré du scénario par défaut ; protéger la motte après intervention.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WP",
+      "WZ"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T2",
+    "originIds": [
+      "L2"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Branches août/septembre selon Bonsai Today ; raccourcissement mi-automne selon Herons. Aucun optimum de taille massive suffisamment concordant : conserver des relais feuillés, étaler les réductions. Ne pas rempoter la même année que les gros travaux.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WP",
+      "WH"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T3",
+    "originIds": [
+      "L3"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Raccourcir sur un relais vivant avec aiguilles ; fin été ou mi-automne selon protocole. Aucun mekiri de pin noir.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WP",
+      "WZ",
+      "WH"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T4",
+    "originIds": [
+      "L4"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Pincement sélectif des chandelles",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Réduire sélectivement les chandelles fortes encore tendres selon leur stade ; ne pas enlever toute la pousse et laisser allonger les branches à épaissir.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WP",
+      "WZ"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T5",
+    "originIds": [
+      "L5"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Désaiguillage modéré / sélection des bourgeons",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Nettoyer les aiguilles anciennes jaunes ou brunes en automne. Pas de désaiguillage fort copié du pin noir ; sélection de bourgeons non validée séparément.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WZ"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T6",
+    "originIds": [
+      "L6"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Positionnement prudent, surveillance du fil. Printemps selon Zulauf ; automne/hiver selon d’autres pratiques. Pas de pliages lourds ni de rempotage cumulés.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WZ",
+      "WP"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T7",
+    "originIds": [
+      "L7"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Aucun calendrier actif : protocole et cultivar à préciser. La mention de multiplication dans une fiche ne suffit pas à valider les mois ni Hagoromo/Kokonoe.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "WP",
+      "WZ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F1-T8",
+    "originIds": [
+      "L2",
+      "L3"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Laisser croître les branches à épaissir, puis revenir progressivement sur des relais feuillés. Fin été/automne conditionnels ; aucune seconde pousse recherchée par décandellation.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "WP",
+      "WZ",
+      "WH"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F1-T9",
+    "originIds": [
+      "L7"
+    ],
+    "family": "Pin blanc du Japon",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Aucun calendrier actif : protocole et cultivar à préciser. La mention de multiplication dans une fiche ne suffit pas à valider les mois ni Hagoromo/Kokonoe.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "WP",
+      "WZ"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F2-T1",
+    "originIds": [
+      "L8"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Printemps avant allongement ; alternative fin été sous maîtrise des soins après rempotage.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T2",
+    "originIds": [
+      "L9"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Automne retenu par défaut ; juillet seulement protocole expert et arbre établi (avis Vibel divergent).",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F2-T3",
+    "originIds": [
+      "L10"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Après maturation des aiguilles, revenir sur relais vivant ; préserver les zones faibles.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T4",
+    "originIds": [
+      "L11"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Pincement sélectif des chandelles",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Réduire seulement les chandelles fortes avant ouverture ; pas de mekiri généralisé.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T5",
+    "originIds": [
+      "L12"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Désaiguillage / sélection des bourgeons",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Éclaircissage modéré en automne ; ne pas arracher systématiquement les aiguilles vivantes.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T6",
+    "originIds": [
+      "L13"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Automne-hiver hors gel ; surveiller les fils et différer les pliages lourds sur arbre faible.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T7",
+    "originIds": [
+      "L14"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Pas de fenêtre validée pour ce projet ; greffage distinct et généralement plus pertinent.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GS",
+      "EP",
+      "VS"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F2-T8",
+    "originIds": [
+      "L9",
+      "L10"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GS",
+      "EP",
+      "VS",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F2-T9",
+    "originIds": [
+      "L14"
+    ],
+    "family": "Pin sylvestre",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Greffe de greffon en fin hiver sous protection ; protocole, porte-greffe et cultivar à vérifier. Ce calendrier ne couvre pas toutes les greffes par approche.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HP",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F3-T1",
+    "originIds": [
+      "L15"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Reprise printanière ; fin été possible si récupération avant froid et soins maîtrisés.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T2",
+    "originIds": [
+      "L16"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Aucun optimum universel établi : conserver du vert sur toute branche maintenue ; taille forte estivale écartée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F3-T3",
+    "originIds": [
+      "L17"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Réduire sur feuillage vert ; ouvrir les zones trop denses sans dénuder les rameaux.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T4",
+    "originIds": [
+      "L18"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Sélection des pousses tendres",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Pas de chandelles. Intervention mesurée ; éviter de mutiler toutes les extrémités.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T5",
+    "originIds": [
+      "L19"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Désaiguillage de type pin",
+    "months": [
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE"
+    ],
+    "note": "Non applicable : feuillage en écailles ou juvénile ; nettoyage traité dans l’entretien.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T6",
+    "originIds": [
+      "L20"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Ligature de positionnement",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Fenêtres prudentes proposées ; calendrier spécifique de cultivar non établi, surveiller les marques.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T7",
+    "originIds": [
+      "L21"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Fin de printemps ; technique avancée, vigueur et feuillage suffisants ; pas de sevrage à date fixe.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F3-T8",
+    "originIds": [
+      "L16",
+      "L17"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HC",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F3-T9",
+    "originIds": [
+      "L21"
+    ],
+    "family": "Chamaecyparis",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "HC",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F4-T1",
+    "originIds": [
+      "L22"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Reprise au printemps, mai seulement reprise tardive ; taille racinaire modérée.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T2",
+    "originIds": [
+      "L23"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "HORS FENÊTRE",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Fenêtre privilégiée : fin février à début mars, avant reprise et hors gel, avec protection possible. Le code O du mois ne vaut pas pour tout février/mars. Préserver feuillage arrière et veines vivantes ; ne pas cumuler rempotage fort et taille lourde.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GJP",
+      "EJ"
+    ],
+    "decision": "Réaudit V3.1 du 16 novembre 2026 : synthèse locale des sources dédiées ; mois indicatifs, stade et météo prioritaires."
+  },
+  {
+    "id": "F4-T3",
+    "originIds": [
+      "L24"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Taille d’entretien aux ciseaux",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Sélectionner les pousses longues, conserver les pointes utiles ; ne pas tailler comme une haie.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T4",
+    "originIds": [
+      "L25"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Pincement généralisé des pointes",
+    "months": [
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ"
+    ],
+    "note": "Déconseillé toute l’année ; sélectionner aux ciseaux plutôt que supprimer toutes les pointes.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T5",
+    "originIds": [
+      "L26"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Éclaircissage du feuillage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Remplace aiguilles/bourgeons : aérer à la base des pousses, sans défolier la branche.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T6",
+    "originIds": [
+      "L27"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Ligature de positionnement",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Mise en place légère seulement ; bois mort et pliages importants exigent un projet distinct.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T7",
+    "originIds": [
+      "L28"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Pas de période suffisamment corroborée dans les références consultées ; ne pas programmer automatiquement.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F4-T8",
+    "originIds": [
+      "L23",
+      "L24"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F4-T9",
+    "originIds": [
+      "L28"
+    ],
+    "family": "Juniperus chinensis",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "EJ",
+      "BJ",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F5-T1",
+    "originIds": [
+      "L29"
+    ],
+    "family": "Hêtre",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Allongement des bourgeons avant ouverture des feuilles ; avril dépend du stade réel.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T2",
+    "originIds": [
+      "L30"
+    ],
+    "family": "Hêtre",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Fin hiver hors gel retenue ; été possible selon Harrington, mais pas optimum automatique.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F5-T3",
+    "originIds": [
+      "L31"
+    ],
+    "family": "Hêtre",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Attendre première pousse développée ; ne pas épuiser les branches faibles.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T4",
+    "originIds": [
+      "L32"
+    ],
+    "family": "Hêtre",
+    "task": "Pincement sélectif des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "À l’ouverture des bourgeons, surtout finition ; ne pas freiner les branches en construction.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T5",
+    "originIds": [
+      "L33"
+    ],
+    "family": "Hêtre",
+    "task": "Défoliation partielle sélective",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Feuilles mûres uniquement ; préférer éclaircissage mesuré à défoliation totale ; aucun optimum systématique.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T6",
+    "originIds": [
+      "L34"
+    ],
+    "family": "Hêtre",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Hors gel ou après maturation ; écorce très sensible, privilégier haubans protégés.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T7",
+    "originIds": [
+      "L35"
+    ],
+    "family": "Hêtre",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Après durcissement de la première pousse ; sevrage selon racines, pas selon mois.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F5-T8",
+    "originIds": [
+      "L30",
+      "L31"
+    ],
+    "family": "Hêtre",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F5-T9",
+    "originIds": [
+      "L35"
+    ],
+    "family": "Hêtre",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GH",
+      "GHP",
+      "HH",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F6-T1",
+    "originIds": [
+      "L36"
+    ],
+    "family": "Chêne",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Printemps au gonflement par défaut ; Q. robur : protocole après ouverture ou début automne selon Harrington, à ne pas généraliser.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T2",
+    "originIds": [
+      "L37"
+    ],
+    "family": "Chêne",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Repos hivernal hors gel privilégié ; été seulement décision technique particulière, jamais arbre récemment prélevé.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F6-T3",
+    "originIds": [
+      "L38"
+    ],
+    "family": "Chêne",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Tailler après maturation de chaque vague ; conserver la pousse si épaississement recherché.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T4",
+    "originIds": [
+      "L39"
+    ],
+    "family": "Chêne",
+    "task": "Sélection des bourgeons / pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Contrôler l’apex sans supprimer les relais des zones faibles ; pas de chandelles.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T5",
+    "originIds": [
+      "L40"
+    ],
+    "family": "Chêne",
+    "task": "Défoliation partielle sélective",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Retirer quelques grandes feuilles mûres ; défoliation totale déconseillée sur arbre faible et non retenue par défaut.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T6",
+    "originIds": [
+      "L41"
+    ],
+    "family": "Chêne",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Préférer jeunes rameaux ou haubanage ; contrôle des fils, jamais bois gelé.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T7",
+    "originIds": [
+      "L42"
+    ],
+    "family": "Chêne",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Difficile selon espèce ; essai expert au printemps actif, sans période optimale garantie.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F6-T8",
+    "originIds": [
+      "L37",
+      "L38"
+    ],
+    "family": "Chêne",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F6-T9",
+    "originIds": [
+      "L42"
+    ],
+    "family": "Chêne",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GQ",
+      "HQ",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F7-T1",
+    "originIds": [
+      "L43"
+    ],
+    "family": "Charme",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Bourgeons en extension avant déploiement ; février seulement arbre déjà au bon stade et protection disponible.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T2",
+    "originIds": [
+      "L44"
+    ],
+    "family": "Charme",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Repos hors gel ; les retours de juin sur pousses mûres relèvent de la formation.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F7-T3",
+    "originIds": [
+      "L45"
+    ],
+    "family": "Charme",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Après durcissement de la pousse printanière ; adapter aux cycles suivants.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T4",
+    "originIds": [
+      "L46"
+    ],
+    "family": "Charme",
+    "task": "Pincement sélectif des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Finition uniquement dans les zones fortes ; conserver l’allongement des branches à grossir.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T5",
+    "originIds": [
+      "L47"
+    ],
+    "family": "Charme",
+    "task": "Défoliation partielle sélective",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Sur sujet vigoureux établi ; garder du feuillage aux extrémités et dans les zones faibles.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T6",
+    "originIds": [
+      "L48"
+    ],
+    "family": "Charme",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Hors gel ou pousses mûres ; contrôler très souvent le marquage de l’écorce.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T7",
+    "originIds": [
+      "L49"
+    ],
+    "family": "Charme",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Période déduite du cadre feuillus ; manque de corroboration spécifique, aucun optimum affiché.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F7-T8",
+    "originIds": [
+      "L44",
+      "L45"
+    ],
+    "family": "Charme",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F7-T9",
+    "originIds": [
+      "L49"
+    ],
+    "family": "Charme",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GC",
+      "HR",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F8-T1",
+    "originIds": [
+      "L50"
+    ],
+    "family": "Érables du Japon",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Gonflement des bourgeons avant ouverture ; février conditionnel, avril tardif selon cultivar.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T2",
+    "originIds": [
+      "L51"
+    ],
+    "family": "Érables du Japon",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "OPTIMAL",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Chute des feuilles privilégiée ; été possible si vigoureux et météo douce ; éviter débourrement et froid marqué.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F8-T3",
+    "originIds": [
+      "L52"
+    ],
+    "family": "Érables du Japon",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Tailler les extensions après maturation ; préserver les rameaux à épaissir.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T4",
+    "originIds": [
+      "L53"
+    ],
+    "family": "Érables du Japon",
+    "task": "Pincement sélectif des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Au déploiement de la première paire ; pas sur arbre en récupération ni sur branches à grossir.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T5",
+    "originIds": [
+      "L54"
+    ],
+    "family": "Érables du Japon",
+    "task": "Défoliation partielle sélective",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Feuilles mûres, sujet établi ; cultivar faible ou rempotage récent : différer. Total jamais automatique.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T6",
+    "originIds": [
+      "L55"
+    ],
+    "family": "Érables du Japon",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Branches nues hors gel ou pousses lignifiées ; écorce fragile, retrait dès début de marquage.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T7",
+    "originIds": [
+      "L56"
+    ],
+    "family": "Érables du Japon",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Après maturation de la première pousse ; ne pas couper avant racines suffisantes.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F8-T8",
+    "originIds": [
+      "L51",
+      "L52"
+    ],
+    "family": "Érables du Japon",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EE",
+      "BE",
+      "GE",
+      "PP",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F8-T9",
+    "originIds": [
+      "L56"
+    ],
+    "family": "Érables du Japon",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Greffe avant débourrement (notamment perçage avec rameau dormant) selon technique ; greffe par approche à planifier distinctement.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "FFB",
+      "EE"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F9-T1",
+    "originIds": [
+      "L57"
+    ],
+    "family": "Mélèzes",
+    "task": "Rempotage",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Méthodes en désaccord : janvier en dormance selon Harrington ; défaut local fin hiver juste avant vert des bourgeons.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T2",
+    "originIds": [
+      "L58"
+    ],
+    "family": "Mélèzes",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Automne à fin hiver hors gel ; éviter grosse réduction quand l’arbre est en plein déploiement.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F9-T3",
+    "originIds": [
+      "L59"
+    ],
+    "family": "Mélèzes",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Laisser allonger si grossissement recherché ; retour sur pousse vivante.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T4",
+    "originIds": [
+      "L60"
+    ],
+    "family": "Mélèzes",
+    "task": "Sélection des pousses tendres",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Aiguilles souples ; ne pas appliquer les protocoles de chandelles des pins.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T5",
+    "originIds": [
+      "L61"
+    ],
+    "family": "Mélèzes",
+    "task": "Désaiguillage de type pin",
+    "months": [
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE",
+      "NON APPLICABLE"
+    ],
+    "note": "Non applicable au conifère caduc ; aucune défoliation programmée.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T6",
+    "originIds": [
+      "L62"
+    ],
+    "family": "Mélèzes",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Avant ouverture et visibilité des bourgeons ; automne possible. Ne pas casser les bourgeons ni laisser marquer.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T7",
+    "originIds": [
+      "L63"
+    ],
+    "family": "Mélèzes",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Fin printemps, protocole expert ; racines suffisantes indispensables au sevrage.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F9-T8",
+    "originIds": [
+      "L58",
+      "L59"
+    ],
+    "family": "Mélèzes",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HL",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F9-T9",
+    "originIds": [
+      "L63"
+    ],
+    "family": "Mélèzes",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "HL",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F10-T1",
+    "originIds": [
+      "L64"
+    ],
+    "family": "Tamarin",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Hypothèse Tamarindus indica : chaleur stable et reprise active ; calendrier européen précis non corroboré.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T2",
+    "originIds": [
+      "L65"
+    ],
+    "family": "Tamarin",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ"
+    ],
+    "note": "Fenêtre chaude proposée uniquement sous conditions ; hiver peu lumineux déconseillé sans installation adaptée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F10-T3",
+    "originIds": [
+      "L66"
+    ],
+    "family": "Tamarin",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Selon croissance réelle ; ne pas tailler si l’arbre stagne ou perd des feuilles.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T4",
+    "originIds": [
+      "L67"
+    ],
+    "family": "Tamarin",
+    "task": "Sélection des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Pas de chandelles ; réserver à la finition d’un sujet vigoureux.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T5",
+    "originIds": [
+      "L68"
+    ],
+    "family": "Tamarin",
+    "task": "Défoliation",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "La case juillet n’est pas suffisamment étayée ; intervention retirée du calendrier actif.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T6",
+    "originIds": [
+      "L69"
+    ],
+    "family": "Tamarin",
+    "task": "Ligature de positionnement",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Jeunes rameaux flexibles ; contrôle fréquent ; chaleur et croissance réelles requises.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T7",
+    "originIds": [
+      "L70"
+    ],
+    "family": "Tamarin",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Aucun protocole européen corroboré ; ne pas confondre tamarin et tamaris.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F10-T8",
+    "originIds": [
+      "L65",
+      "L66"
+    ],
+    "family": "Tamarin",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "ET",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F10-T9",
+    "originIds": [
+      "L70"
+    ],
+    "family": "Tamarin",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "ET",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F11-T1",
+    "originIds": [
+      "L71"
+    ],
+    "family": "Ficus",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "En Champagne : privilégier chaleur et lumière de début été ; printemps possible en local chaud et croissance active.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T2",
+    "originIds": [
+      "L72"
+    ],
+    "family": "Ficus",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ"
+    ],
+    "note": "Chaleur et forte activité ; désaccord avec la proposition janvier/février de Bonsaï Entretien.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F11-T3",
+    "originIds": [
+      "L73"
+    ],
+    "family": "Ficus",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Après extension, selon vigueur ; hiver possible seulement avec croissance entretenue, non fenêtre par défaut.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T4",
+    "originIds": [
+      "L74"
+    ],
+    "family": "Ficus",
+    "task": "Sélection des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Pour ramification fine ; laisser croître les branches qui doivent grossir.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T5",
+    "originIds": [
+      "L75"
+    ],
+    "family": "Ficus",
+    "task": "Défoliation partielle sélective",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Préférer partiel ; espèce de ficus à confirmer ; éviter cumul avec travail racinaire fort.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T6",
+    "originIds": [
+      "L76"
+    ],
+    "family": "Ficus",
+    "task": "Ligature de positionnement",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Branches flexibles, marques rapides ; haubans pour fortes sections.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T7",
+    "originIds": [
+      "L77"
+    ],
+    "family": "Ficus",
+    "task": "Marcottage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Fenêtre chaude proposée ; vérifier protocole de l’espèce et enracinement avant sevrage.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F11-T8",
+    "originIds": [
+      "L72",
+      "L73"
+    ],
+    "family": "Ficus",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF",
+      "BF",
+      "GJ",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F11-T9",
+    "originIds": [
+      "L77"
+    ],
+    "family": "Ficus",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Greffe par approche en croissance chaude et lumineuse ; confirmer compatibilité et attendre soudure avant sevrage.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EF"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F12-T1",
+    "originIds": [
+      "L78"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Avant allongement des chandelles ; fin été possible en soins maîtrisés. Mai sorti de la fenêtre ordinaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T2",
+    "originIds": [
+      "L79"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Automne hors gel ; préserver relais feuillés ; distinguer de la décandellation estivale.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F12-T3",
+    "originIds": [
+      "L80"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Taille d’entretien",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Après maturation des pousses ; ne pas rabattre une branche sans relais vivant.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T4",
+    "originIds": [
+      "L81"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Pincement sélectif des chandelles",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Choix de stratégie, pas un préalable obligatoire au mekiri ; branches à épaissir laissées libres.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T5",
+    "originIds": [
+      "L82"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Désaiguillage / sélection des bourgeons",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Mai/juin : aiguilles anciennes selon Galinou ; automne : équilibrage et sélection. Pas toute la saison en optimal.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T6",
+    "originIds": [
+      "L83"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "OPTIMAL",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Automne-hiver hors gel, après soins vérifiés ; pliages lourds séparés du programme de ramification.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T7",
+    "originIds": [
+      "L84"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Ne pas présenter comme technique ordinaire du pin noir ; calendrier non validé.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F12-T8",
+    "originIds": [
+      "L79",
+      "L80"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "GN",
+      "GNP",
+      "EP",
+      "BP",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F12-T9",
+    "originIds": [
+      "L84"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Greffe de greffon en fin hiver sous protection ; protocole, porte-greffe et cultivar à vérifier. Ce calendrier ne couvre pas toutes les greffes par approche.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "HP",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F13-T1",
+    "originIds": [
+      "L85"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Rempotage",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Printemps avant reprise ou après floraison ; juillet seulement floraison tardive, vigueur et météo douce.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T2",
+    "originIds": [
+      "L86"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Taille structurelle lourde",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construction au printemps en sacrifiant fleurs, ou juste après floraison ; juillet conditionnel, août non optimal.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois. Réexaminé en V3.1 : fenêtre conservée, limites et arbitrage détaillés dans le rapport."
+  },
+  {
+    "id": "F13-T3",
+    "originIds": [
+      "L87"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Taille d’entretien après floraison",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Agir promptement après floraison ; taille tardive enlève les boutons de l’an prochain.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T4",
+    "originIds": [
+      "L88"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Sélection des pousses",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Adapter à floraison et projet ; ne pas pincer systématiquement les futures pousses florales.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T5",
+    "originIds": [
+      "L89"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Suppression des fleurs fanées et ovaires",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Déclencheur = fin de floraison, sans attendre un mois fixe ; ce n’est pas un désaiguillage.",
+    "confidence": "élevée",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T6",
+    "originIds": [
+      "L90"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Ligature de positionnement",
+    "months": [
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS"
+    ],
+    "note": "Bois cassant ; précaution toute l’année, après floraison si projet adapté ; aucun optimum universel.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T7",
+    "originIds": [
+      "L91"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Marcottage",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Absence de calendrier satsuki assez corroboré ; bouturage documenté mais technique différente.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB"
+    ],
+    "decision": "Fenêtres mensuelles proposées par l’audit pour Reims, déduites des stades et saisons ; les sources ne valident pas chaque mois."
+  },
+  {
+    "id": "F13-T8",
+    "originIds": [
+      "L86",
+      "L87"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Taille de formation (retour sur relais)",
+    "months": [
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "OPTIMAL",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE",
+      "HORS FENÊTRE"
+    ],
+    "note": "Construire par étapes : laisser allonger pour épaissir, puis revenir sur un relais suffisamment fort. Ce n’est pas la suppression d’une grosse charpentière. Sur arbre abouti, limiter à la correction nécessaire.",
+    "confidence": "moyenne",
+    "timingConfidence": "moyenne",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB",
+      "GCG"
+    ],
+    "decision": "Ligne ajoutée pour distinguer objectif de formation et taille lourde ; calendrier adapté par jugement horticole."
+  },
+  {
+    "id": "F13-T9",
+    "originIds": [
+      "L91"
+    ],
+    "family": "Azalée satsuki",
+    "task": "Greffe (protocole à préciser)",
+    "months": [
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ",
+      "NON DOCUMENTÉ"
+    ],
+    "note": "Méthode et compatibilité à préciser avant de donner une période ; aucune fenêtre active proposée.",
+    "confidence": "faible",
+    "timingConfidence": "faible",
+    "sources": [
+      "EA",
+      "BA",
+      "FFB",
+      "FFB"
+    ],
+    "decision": "Ancienne ligne marcotte/greffe scindée ; absence de protocole signalée explicitement."
+  },
+  {
+    "id": "F12-T10",
+    "originIds": [
+      "L81",
+      "L82"
+    ],
+    "family": "Pin noir du Japon",
+    "task": "Mekiri / décandellation (option expert)",
+    "months": [
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "SOUS CONDITIONS",
+      "SOUS CONDITIONS",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ",
+      "DÉCONSEILLÉ"
+    ],
+    "note": "Fin juin ou début juillet seulement si sujet très vigoureux établi et saison chaude restante suffisante. À Reims, renoncer si saison fraîche, arbre faible ou racines récemment travaillées. Ne pas cumuler avec pincement systématique ou désaiguillage fort ; aucune transposition aux pins blancs/sylvestres.",
+    "confidence": "moyenne",
+    "timingConfidence": "faible",
+    "sources": [
+      "EP",
+      "GN",
+      "GNP"
+    ],
+    "decision": "Technique absente des lignes explicites originales ; protocole alternatif, jamais une obligation annuelle."
+  }
+];
+const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const SHORT_MONTHS=['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Août','Sep','Oct','Nov','Déc'];
+const palette=['#477a64','#a07649','#56829a','#8c6c9b','#6c8c58','#a16b63','#537f78','#bd8b48','#7284a7','#8d8065','#5c9475','#b27b98','#548a9b'];
+const $=id=>document.getElementById(id);
+const families=[...new Set(DATA.map(x=>x.family))];
+let month=new Date().getMonth();
+try{const saved=localStorage.getItem('bonsai_preview_v31_month');if(saved!==null&&Number.isInteger(+saved)&&+saved>=0&&+saved<12)month=+saved}catch(e){}
+const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function statusOf(v){return {'OPTIMAL':'optimal','SOUS CONDITIONS':'conditional','DÉCONSEILLÉ':'discouraged','NON DOCUMENTÉ':'unknown','NON APPLICABLE':'na'}[v]||'off'}
+function statusText(s){return {optimal:'Optimal',conditional:'Possible sous conditions',discouraged:'Déconseillé',unknown:'Non documenté',na:'Non applicable',off:'Hors fenêtre habituelle'}[s]}
+for(const [i,m] of MONTHS.entries()){const b=document.createElement('button');b.type='button';b.className='month';b.textContent=SHORT_MONTHS[i];b.title=m;b.setAttribute('aria-label',m);b.setAttribute('aria-pressed',String(i===month));b.addEventListener('click',()=>{month=i;try{localStorage.setItem('bonsai_preview_v31_month',String(i))}catch(e){}render()});$('months').appendChild(b)}
+for(const f of families){for(const id of ['family','overviewFamily']){const o=document.createElement('option');o.value=f;o.textContent=f;$(id).appendChild(o)}}
+for(const t of [...new Set(DATA.map(x=>x.task))].sort((a,b)=>a.localeCompare(b,'fr'))){const o=document.createElement('option');o.value=t;o.textContent=t;$('task').appendChild(o)}
+
+const CLIMATE={"Pin blanc du Japon":{"exposure":"Soleil ; légère ombre aux heures brûlantes","hardiness":"Rustique, mais vigueur variable selon cultivar et porte-greffe","pot":"Protéger les petites coupes et les racines du gel durable ; abriter du vent.","sources":["WZ","WP"]},"Pin sylvestre":{"exposure":"Plein soleil","hardiness":"Très rustique une fois acclimaté","pot":"Isoler le pot pendant les gels prolongés ; éviter vent desséchant et motte détrempée.","sources":["GS"]},"Chamaecyparis":{"exposure":"Soleil, abrité du vent","hardiness":"Rusticité variable selon espèce/cultivar","pot":"Protéger le pot et du vent hivernal ; ne pas laisser dessécher la motte.","sources":["HC"]},"Juniperus chinensis":{"exposure":"Plein soleil ; ombre légère en canicule","hardiness":"Rustique ; attention aux épisodes longs","pot":"Protéger les racines du gel durable et des vents ; garder un drainage efficace.","sources":["GJP","EJ"]},"Hêtre":{"exposure":"Soleil doux ou mi-ombre ; protéger du soleil brûlant","hardiness":"Rustique ; jeunes feuilles sensibles aux gelées tardives","pot":"Isoler le pot ; abriter les pousses au débourrement.","sources":["GH","HH"]},"Chêne":{"exposure":"Plein soleil, bonne aération","hardiness":"Chênes caducs européens rustiques ; vérifier l’espèce","pot":"En bonsaï, protéger des gels forts ; le chêne en pleine terre ne donne pas le seuil de ses racines en pot.","sources":["GQ","HQ"]},"Charme":{"exposure":"Soleil doux ou mi-ombre","hardiness":"Rustique ; dépend de l’espèce","pot":"Protéger le pot des gels prolongés et les jeunes feuilles des gelées tardives.","sources":["GC","HR"]},"Érables du Japon":{"exposure":"Soleil du matin, mi-ombre l’après-midi en été","hardiness":"Rustique ; bourgeons ouverts et jeunes feuilles fragiles","pot":"Protéger le pot du froid durable ; abriter dès le débourrement si gel annoncé.","sources":["EE"]},"Mélèzes":{"exposure":"Soleil ; mi-ombre possible en forte chaleur","hardiness":"Très rustique au repos, généralement plus que les satsuki","pot":"La résistance de l’arbre n’exclut pas la surveillance des petits pots et des pousses nouvelles.","sources":["HL"]},"Tamarin":{"exposure":"Très lumineux, soleil progressif ; ombre aux heures brûlantes","hardiness":"Tropical, non rustique ; aucun gel","pot":"Hiverner en pièce chaude et lumineuse, environ 15–29 °C selon le guide ; rentrer avant les nuits froides.","sources":["ET"]},"Ficus":{"exposure":"Très lumineux ; acclimater progressivement au soleil","hardiness":"Tropical, non rustique ; aucun gel","pot":"Hiverner au chaud et à la lumière ; ne pas attendre les premières gelées pour rentrer.","sources":["EF"]},"Pin noir du Japon":{"exposure":"Plein soleil","hardiness":"Rustique, moins adapté aux froids prolongés qu’un pin sylvestre","pot":"Protéger le pot du gel durable, surtout petits sujets et arbres récemment travaillés.","sources":["GN","EP"]},"Azalée satsuki":{"exposure":"Soleil doux ou mi-ombre ; ombrer en forte chaleur","hardiness":"Tolère des gelées modérées ; plus sensible que le mélèze","pot":"Abri froid lumineux lors des gels marqués ; Empire conseille protection sous −5 °C, repère et non garantie pour chaque pot.","sources":["EA"]}};
+function climateHtml(f){const c=CLIMATE[f];return '<div class="climate"><strong>Exposition :</strong> '+safe(c.exposure)+'<br><strong>Rusticité de l’arbre :</strong> '+safe(c.hardiness)+'<br><strong>Racines en pot · Reims :</strong> '+safe(c.pot)+'<br><small>'+c.sources.map(k=>'<a href="'+safe(SOURCES[k][1])+'" target="_blank" rel="noopener noreferrer">'+safe(SOURCES[k][0])+'</a>').join(' · ')+'</small></div>';}
+const ICON_PATHS={T1:'M4 13h16l-2 7H6z M12 13V4m-4 4 4-4 4 4',T2:'M4 18 18 4l3 3L7 21z M8 14l2 2m1-5 2 2m1-5 2 2',T3:'M9 10 20 3M9 14l11 7M5 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6m0 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6',T4:'M12 21V9m0 6C4 15 3 9 5 5c5 0 7 4 7 10m0-3c0-6 4-9 8-9 1 5-2 9-8 9',T5:'M12 21V4m0 9L5 6m7 10L3 10m9 3 7-7m-7 10 9-6',T6:'M5 3c15 0 15 6 0 6s-2 6 10 6 2 6-9 6M12 2v20',T7:'M12 2v20M6 8h12v8H6zM6 11h12m-12 3h12',T8:'M6 21V6m0 8 9-9m-9 5 9 7m-3-15h7v7m-7 5h7v7',T9:'M8 22V12l8-8m-8 8L3 7m9 1 4 4m-7 2 4 4M6 17l5-5',T10:'M12 22V10m-4 0V4m8 6V4M5 12h14M4 3l5 5m11-5-5 5'};
+function taskIcon(id){return '<svg class="task-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+ICON_PATHS[id.split('-')[1]]+'"/></svg>';}
+let returnState=null;
+function saveReturn(button){returnState={month,view:$('overviewView').hidden?'monthly':'overview',family:$('family').value,task:$('task').value,status:$('status').value,notes:$('notes').checked,overviewFamily:$('overviewFamily').value,scrollY:window.scrollY,scrollX:document.querySelector('.overview-scroll').scrollLeft,row:button?.dataset.row,cellMonth:button?.dataset.month};}
+function returnToPrevious(){if(!returnState){document.querySelectorAll('details.card[open]').forEach(c=>{c.open=false;c.querySelector('summary').focus()});return;}const s=returnState;returnState=null;month=s.month;for(const k of ['family','task','status','overviewFamily'])$(k).value=s[k];$('notes').checked=s.notes;render();setView(s.view);try{localStorage.setItem('bonsai_preview_v31_month',String(month))}catch(e){}requestAnimationFrame(()=>{document.querySelector('.overview-scroll').scrollLeft=s.scrollX;window.scrollTo(0,s.scrollY);if(s.row)document.querySelector('button[data-row="'+s.row+'"][data-month="'+s.cellMonth+'"]')?.focus({preventScroll:true});});}
+
+function render(){document.querySelectorAll('.month').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===month)));$('heading').textContent='Interventions · '+MONTHS[month];const fam=$('family').value,task=$('task').value,st=$('status').value,showNotes=$('notes').checked;let total=0;let groups=[];
+for(const [i,f] of families.entries()){if(fam&&f!==fam)continue;const items=DATA.filter(x=>x.family===f&&(!task||x.task===task)).filter(x=>{const s=statusOf(x.months[month]);return st==='all'||(st==='active'&&['optimal','conditional'].includes(s))||st===s});if(!items.length)continue;total+=items.length;const cards=items.map(x=>{const s=statusOf(x.months[month]);const note=x.note?'<strong>Précaution :</strong> '+safe(x.note)+'<br><strong>Confiance technique :</strong> '+safe(x.confidence)+' · <strong>Calendrier local :</strong> '+safe(x.timingConfidence)+'<br><strong>Références :</strong> '+[...new Set(x.sources)].map(k=>'<a title="'+safe(SOURCES[k][0]+' — '+SOURCES[k][2])+'" href="'+safe(SOURCES[k][1])+'" target="_blank" rel="noopener noreferrer">'+safe(SOURCES[k][0])+'</a>').join(' · ')+'<br><span class="generic">'+safe(x.decision)+'</span>':'<span class="generic">Pas de précision supplémentaire dans le calendrier source. Adapter l’intervention à la vigueur et au stade de l’arbre.</span>';return `<details class="card" id="card-${safe(x.id)}"><summary><span class="status ${s}"></span><span class="task">${taskIcon(x.id)}${safe(x.task)}</span><span class="pill ${s}">${statusText(s)}</span></summary>${showNotes?`<div class="detail">${note}<button class="backbtn" type="button" data-return>← Retour</button></div>`:'<div class="detail">Consulter les précautions en activant l’option ci-dessus.<button class="backbtn" type="button" data-return>← Retour</button></div>'}</details>`}).join('');groups.push(`<section class="group"><div class="group-head" style="--group:${palette[i%palette.length]}"><div class="badge"></div><div><h3>${safe(f)}</h3><span>${items.length} intervention${items.length>1?'s':''}</span></div></div>${climateHtml(f)}<div class="cards">${cards}</div></section>`)}
+$('count').textContent=total+' intervention'+(total>1?'s':'')+' · '+groups.length+' famille'+(groups.length>1?'s':'');$('results').innerHTML=groups.length?groups.join(''):'<div class="panel empty">Aucune intervention ne correspond à ces filtres pour ce mois. Essaie « Toutes les périodes ».</div>'}
+function renderOverview(){const selected=$('overviewFamily').value;let climatePanel=$('overviewClimate');if(climatePanel)climatePanel.innerHTML=selected?climateHtml(selected):'<p class="overview-note">Exposition et gel : sélectionner une famille pour voir ses repères. Rusticité de l’arbre et protection des racines en pot sont distinctes.</p>';const head=$('overviewTable').querySelector('thead tr');head.innerHTML='<th class="familycol">Famille</th><th class="taskcol">Intervention</th>'+MONTHS.map((m,i)=>`<th scope="col" title="${m}" class="${i===new Date().getMonth()?'currentcol':''}">${SHORT_MONTHS[i]}</th>`).join('');let previous='';$('overviewTable').querySelector('tbody').innerHTML=families.filter(f=>!selected||f===selected).flatMap(f=>DATA.filter(x=>x.family===f)).map(x=>{const idx=families.indexOf(x.family);const start=x.family!==previous;previous=x.family;return `<tr class="${start?'family-start':''}" style="--group:${palette[idx%palette.length]}"><td class="familycol">${start?safe(x.family):''}</td><td class="taskcol">${taskIcon(x.id)}${safe(x.task)}</td>${x.months.map((v,i)=>{const st=statusOf(v);return `<td class="${i===new Date().getMonth()?'currentcol':''}" title="${safe(x.family)} · ${safe(x.task)} · ${MONTHS[i]} : ${statusText(st)}. ${safe(x.note)} Confiance calendrier : ${safe(x.timingConfidence)}"><button type="button" class="cellbutton" data-row="${safe(x.id)}" data-month="${i}" aria-label="${safe(x.family)} · ${safe(x.task)} · ${MONTHS[i]} : ${statusText(st)} — ouvrir la fiche"><span class="cellstatus ${st}" aria-hidden="true">${{optimal:"O",conditional:"C",discouraged:"D",off:"H",unknown:"?",na:"N"}[st]}</span></button></td>`}).join('')}</tr>`}).join('')}
+function setView(view){const overview=view==='overview';$('monthlyView').hidden=overview;$('overviewView').hidden=!overview;$('monthlyBtn').setAttribute('aria-pressed',String(!overview));$('overviewBtn').setAttribute('aria-pressed',String(overview));if(overview)renderOverview()}
+$('overviewTable').addEventListener('click',event=>{
+const button=event.target.closest('button[data-row]');if(!button)return;
+const row=DATA.find(x=>x.id===button.dataset.row);if(!row)return;
+saveReturn(button);month=Number(button.dataset.month);$('family').value=row.family;$('task').value=row.task;$('status').value='all';$('notes').checked=true;
+try{localStorage.setItem('bonsai_preview_v31_month',String(month))}catch(e){}
+setView('monthly');render();const card=$('card-'+row.id);card.open=true;card.querySelector('summary').focus();card.scrollIntoView({block:'center'});
+});
+$('results').addEventListener('click',e=>{if(e.target.closest('[data-return]'))returnToPrevious()});
+$('monthlyBtn').addEventListener('click',()=>setView('monthly'));$('overviewBtn').addEventListener('click',()=>setView('overview'));$('overviewFamily').addEventListener('change',renderOverview);
+for(const id of ['family','task','status','notes'])$(id).addEventListener('change',render);render();
+</script></body></html>
